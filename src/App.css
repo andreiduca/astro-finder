@@ -1,38 +1,79 @@
+:root {
+  --text: #d8dadc;
+  --background: #181a1a;
+  --border: #a8aaaa;
+  --input-background: #282a3a;
+  --button-background-hover: #282a3a;
+}
+
 .App {
   text-align: center;
+  background-color: var(--background);
+  color: var(--text);
+  min-height: 100vh;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 2rem;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App input {
+  margin: 0 0.25em 0 1em;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--input-background);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App button {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 4px;
+}
+.App button:hover {
+  background: var(--button-background-hover);
+}
+
+.App main {
+  display: grid;
+  padding: 24px;
+  gap: 24px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 800px) {
+  .App main {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (min-width: 1200px) {
+  .App main {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.App main > article {
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+
+.App article:not(:has(article)) {
+  text-align: left;
+}
+.App article:not(:has(article)) div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App article h1:not(:first-child) {
+  text-align: right;
 }
