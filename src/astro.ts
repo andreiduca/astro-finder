@@ -53,7 +53,6 @@ export function absoluteDegree(degree: Degree): Degree {
  * Adds seconds to an hour-angle, returning a new hour-angle
  */
 export function addTimeToHourAngle(hourAngle: HourAngle, seconds: number): HourAngle {
-  //const totalSeconds = hourAngle.second + seconds;
   const totalSeconds = hourAngle.second + Math.floor(seconds / SIDEREAL_TIME);
   const totalMinutes = hourAngle.minute + Math.floor(totalSeconds / 60);
   const totalHours = hourAngle.hour + Math.floor(totalMinutes / 60);
