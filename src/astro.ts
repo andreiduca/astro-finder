@@ -1,6 +1,7 @@
 // rotating mount settings
 const DECLINATION_DIAL = 0;         // initial rotation, pointing North
 const DECLINATION_DIRECTION = -1;   // rotation direction: 1 = CW / -1 = CCW
+const SIDEREAL_TIME = 0.9972696246; // sidereal second multiplier
 
 // a floating degree number
 type Degree = number;
@@ -52,7 +53,8 @@ export function absoluteDegree(degree: Degree): Degree {
  * Adds seconds to an hour-angle, returning a new hour-angle
  */
 export function addTimeToHourAngle(hourAngle: HourAngle, seconds: number): HourAngle {
-  const totalSeconds = hourAngle.second + seconds;
+  //const totalSeconds = hourAngle.second + seconds;
+  const totalSeconds = hourAngle.second + Math.floor(seconds / SIDEREAL_TIME);
   const totalMinutes = hourAngle.minute + Math.floor(totalSeconds / 60);
   const totalHours = hourAngle.hour + Math.floor(totalMinutes / 60);
 
